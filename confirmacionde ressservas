@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Confirmación de Reserva</title>
+</head>
+<body>
+    <h1>Confirmación de Reserva</h1>
+    <p>Gracias por reservar con nosotros, <span th:text="${usuario.nombre}">Nombre</span>.</p>
+    <p>Reserva realizada con éxito. Puede ver el detalle de su reserva en la sección de Mis Reservas.</p>
+    <a href="/reservas/mis-reservas">Ir a Mis Reservas</a>
+</body>
+</html>
