@@ -1,0 +1,14 @@
+@Service
+public class UsuarioService {
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    public Optional<Usuario> findByCorreo(String correo) {
+        return usuarioRepository.findByCorreo(correo);
+    }
+
+    public Usuario save(Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
+}
