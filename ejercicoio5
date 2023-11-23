@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Catálogo de Habitaciones</title>
+</head>
+<body>
+    <h1>Catálogo de Habitaciones</h1>
+    <table>
+        <tr>
+            <th>Número</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+            <th>Disponibilidad</th>
+            <th>Acciones</th>
+        </tr>
+        <tr th:each="habitacion : ${habitaciones}">
+            <td th:text="${habitacion.numero}">101</td>
+            <td th:text="${habitacion.tipo}">Individual</td>
+            <td th:text="${habitacion.precio}">$100</td>
+            <td th:text="${habitacion.disponibilidad}">Disponible</td>
+            <td>
+                <form th:action="@{/api/reservas/agregar/{numero}(num
