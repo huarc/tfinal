@@ -1,0 +1,22 @@
+@RestController
+@RequestMapping("/api/usuarios")
+public class UsuarioController {
+
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @PostMapping
+    public ResponseEntity<Usuario> registrarUsuario(@RequestBody Usuario usuario) {
+        return ResponseEntity.ok(usuarioService.save(usuario));
+    }
+
+    @GetMapping("/{correo}")
+    public ResponseEntity<Usuario> buscarUsuarioPorCorreo(@PathVariable("correo") String correo) {
+        Optional<Usuario> usuario = usuarioService.findByCorreo(correo);
+        if (usuario.isPresent()) {
+            return ResponseEntity.ok(usuario.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+}
