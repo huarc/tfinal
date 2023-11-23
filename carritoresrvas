@@ -1,0 +1,32 @@
+@RestController
+@RequestMapping("/api/reservas")
+public class ReservaController {
+
+    @Autowired
+    private ReservaService reservaService;
+
+    @GetMapping("/carrito")
+    public ResponseEntity<List<Reserva>> obtenerCarrito() {
+        return ResponseEntity.ok(reservaService.obtenerCarrito());
+    }
+
+    @PostMapping("/agregar/{numero}")
+    public ResponseEntity<List<Reserva>> agregarHabitacionAlCarrito(@PathVariable("numero") Long numero) {
+        return ResponseEntity.ok(reservaService.agregarHabitacionAlCarrito(numero));
+    }
+
+    @DeleteMapping("/eliminar/{numero}")
+    public ResponseEntity<List<Reserva>> eliminarHabitacionDelCarrito(@PathVariable("numero") Long numero) {
+        return ResponseEntity.ok(reservaService.eliminarHabitacionDelCarrito(numero));
+    }
+
+    @PutMapping("/actualizar/{numero}")
+    public ResponseEntity<List<Reserva>> actualizarReserva(@PathVariable("numero") Long numero, @RequestBody Reserva reserva) {
+        return ResponseEntity.ok(reservaService.actualizarReserva(numero, reserva));
+    }
+
+    @PostMapping("/confirmar")
+    public ResponseEntity<Reserva> confirmarReserva() {
+        return ResponseEntity.ok(reservaService.confirmarReserva());
+    }
+}
